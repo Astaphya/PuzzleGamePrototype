@@ -9,10 +9,10 @@ public class AltCollide : MonoBehaviour
        Debug.Log("Çarpışma");
        if(other.gameObject.CompareTag("Image2") )
         {
-            other.gameObject.transform.localPosition = new Vector3(this.transform.parent.localPosition.x , this.transform.parent.localPosition.y -250, 0);
+            other.transform.SetParent(this.transform.parent.gameObject.transform);
+            other.gameObject.transform.localPosition = new Vector3(0 , -250, 0);
             Debug.Log("Image2");
             other.gameObject.GetComponent<Dragable>().enabled = false;
-            other.transform.SetParent(this.transform.parent.gameObject.transform);
             GameManager.partSayac++;
             this.gameObject.SetActive(false);
             other.gameObject.transform.GetComponent<Hareket>().enabled = false;
